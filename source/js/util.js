@@ -5,5 +5,10 @@
      return container.content;
     };
 
-
+const main = document.getElementById('main');
+/*отрисовывает представление в DOM*/
+export const changeView = (view) => {
+  main.innerHTML = '';
+  main.appendChild(view.element);
+}
 
