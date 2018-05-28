@@ -66,11 +66,11 @@ export const quest = {
         description: `Вы побежите влево, от гриба`
       },
       [RIGHT]: {
-        result: Result.NEXT,
+        result: Result.DIE,
         description: `Вы побежите вправо, прямо на гриб`
       },
       [JUMP]: {
-        result: Result.NEXT_LEVEL,
+        result: Result.NEXT,
         description: `Вы прыгнете вверх`
       },
     }
@@ -81,7 +81,7 @@ export const quest = {
     конструкциями. Что вы предпримете?`,
     answers: {
       [JUMP]: {
-        result: Result.NEXT_LEVEL,
+        result: Result.NEXT,
         description: `Как что, конечно же подпрыгну и со всей силы ударюсь головой о железяку!`
       }
     }
@@ -97,14 +97,6 @@ export const quest = {
         description: `Конечно же съесть его!`
       }
     }
-
-    [
-      {
-        action: `1`,
-        title: `Конечно же съесть его!`,
-        result: Result.WIN
-      }
-    ]
   }
 };
 

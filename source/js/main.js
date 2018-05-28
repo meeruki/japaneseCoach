@@ -1,11 +1,10 @@
 import welcome from './welcome/welcome';
 import game from './game/game'
 
+
 const ControllerID = {
   WELCOME: '',
   GAME: 'game'
-/*  WIN: 'die',
-  DIE: 'win',*/
 };
 
 const getControllerIDFromHash = (hash) => hash.replace('#', '');

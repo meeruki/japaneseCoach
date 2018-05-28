@@ -18,6 +18,7 @@ class Game {
           this.view = new GameOverView(false);
           this.view.onRepeat = () => {
             this.state = setLives(this.state, this.state.lives - 1);
+            console.log(this.state);
             this.view = new LevelView(this.state);
             this.init();
           };
@@ -41,8 +42,21 @@ class Game {
 
       this.init();
     };
-  }
-}
+    //
+   /* restart(continueGame) {
+    if (!continueGame) {
+      this.model.restart();
+    }
+    this.startGame();
+    }
 
+    exit() {
+      this.state = initialGame;
+      this.view =new LevelView(this.state);
+      this.init(){
+    }*/
+//
+  }
+};
 const game = new Game();
 export default game;

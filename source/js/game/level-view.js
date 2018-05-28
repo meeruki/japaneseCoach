@@ -4,7 +4,7 @@ import AbstractView from '../view';
 const ENTER_KEYCODE = 13;
 
 const drawHeart = (full) => {
-  return `<span class="heart">`
+  return `<span class="heart__${full ? `full` : `empty`}">${full ? `&#9829;` : `&#9825;`}</span>`;
 };
 
 const drawHeader = (data) => {
@@ -28,9 +28,13 @@ export default class LevelView extends AbstractView {
 
   get template() {
     const level = getLevel(this.state.level);
+    const answersObjs = level.answers;
+    let descriptions = [];
+    for (let key in answersObjs) {
+        descriptions.push(answersObjs[key].description);
+    }
+    const answerNames = Object.keys(answersObjs);
 
-    const answerNames = Object.keys(level.answers);
-    const answers = answerNames.map((key) => ({key, value: level.answers}));
 
   return `
    ${drawHeader(this.state)}
@@ -38,7 +42,7 @@ export default class LevelView extends AbstractView {
       <p class="text">${level.text}</p>
       <input type="text">
       <ul class="answers">
-         ${answers.map(({key, value}) => `<li class="answer">${key}.${value}</li>`).join(``
+         ${answerNames.map((key, i) => `<li class="answer">${key} ${descriptions[i]}</li>`).join(``
       )}
       </ul>
     </div>
