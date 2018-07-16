@@ -1,0 +1,39 @@
+@import "fonts";
+@import "buttons";
+
+.settings {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__title {
+    @include bold-text;
+    font-size: 34px;
+  }
+  &__create {
+    @include button-gray;
+  }
+}
+
+.sets {
+  border: 2px solid lightgray;
+  border-collapse: collapse;
+  align-self: flex-start;
+  width: 100%;
+  font-size: 18px;
+  &__caption{
+    text-align: left;
+    padding-bottom: 10px;
+    font-size: 20px;
+  }
+  td{
+    padding: 0 5px;
+    border: 2px solid lightgray;
+
+  }
+  &__quantity {
+    text-align: right;
+    font-size: 14px;
+  }
+}
+

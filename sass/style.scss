@@ -1,0 +1,25 @@
+@import "central";
+@import "colors";
+@import "fonts";
+@import "rules";
+@import "settings";
+@import "create";
+
+html {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #7FFFD4 linear-gradient(to bottom left, #E0FFFF, #7FFFD4) no-repeat;
+
+  @include regular-text;
+  color: $main-font-color;
+  min-height: 100%;
+}
+
+a {
+  color: $main-font-color;
+}
+

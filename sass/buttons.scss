@@ -1,0 +1,15 @@
+@mixin button-gray() {
+  cursor: pointer;
+  background-color: lightgray;
+  border-radius: 10px;
+  padding: 10px 15px;
+  color: graytext;
+  border: none;
+  font-size: 20px;
+  margin-bottom: 20px;
+
+  &:hover {
+    color: black;
+  }
+}
+

@@ -1,11 +1,14 @@
-build/
-node_modules/
+# Файлы и папки операционной системы
 .DS_Store
 Thumbs.db
+
+# Файлы редактора
 .idea
 *.sublime*
-*.log
-*.psd
-*.ai
-*.pdf
-npm-debug.log*
+
+# Вспомогательные файлы
+*.log*
+node_modules/
+
+# Папка с собранными файлами проекта
+build/

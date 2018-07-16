@@ -1,0 +1,53 @@
+@import "fonts";
+@import "buttons";
+
+.create {
+  &__form {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  &__header-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  &__title {
+    @include bold-text;
+    font-size: 34px;
+    margin-right: 3%;
+  }
+  &__button-submit {
+    @include button-gray;
+    align-self: flex-end;
+  }
+  label {
+    color: graytext;
+    @include small-text;
+    margin-bottom: 5px;
+  }
+  &__form-title + label{
+    margin-bottom: 35px;
+  }
+  &__syllabary + label{
+    margin-bottom: 30px;
+  }
+  &__additional-wrap {
+    display: flex;
+    flex-direction: row;
+    p {
+      color: graytext;
+      @include small-text;
+    }
+  }
+  &__button-add {
+    @include button-gray;
+    align-self: center;
+    margin-right: 5px;
+    padding: 5px 10px;
+  }
+}
+
+
+
