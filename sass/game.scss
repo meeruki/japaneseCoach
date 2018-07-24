@@ -1,0 +1,32 @@
+@import "fonts";
+@import "buttons";
+
+.game {
+  padding-top: 100px;
+  text-align: center;
+   &__title {
+    @include bold-text;
+  }
+    &__table {
+    text-align: left;
+    width: 100%;
+      td:last-of-type {
+        text-align: right;
+      }
+    }
+  &__answer-wrap {
+    display: flex;
+    flex-direction: row;
+  }
+  &__description {
+    padding-right: 5%;
+  }
+  &__answer-button {
+    @include button-gray;
+    padding: 10px 10px;
+    margin-top: 20px;
+  }
+
+}
+
+

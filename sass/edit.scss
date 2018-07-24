@@ -1,0 +1,49 @@
+@import "fonts";
+@import "buttons";
+
+.edit {
+    padding-top: 30px;
+  &__title {
+    @include bold-text;
+    font-size: 34px;
+    margin-right: 3%;
+    margin-bottom: 15px;
+  }
+
+  &__button-save {
+    @include button-gray;
+  }
+  &__set {
+    border-collapse: collapse;
+    border: 1px solid lightgray;
+  }
+  td {
+    height: 35px;
+    padding-right: 30px;
+    padding-left: 10px;
+    border: 1px solid lightgray;
+    font-size: 20px;
+  }
+  th {
+    padding: 10px;
+    border: 1px solid lightgray;
+    text-align: left;
+  }
+
+  &__additional-wrap {
+    display: flex;
+    flex-direction: row;
+    p {
+      color: graytext;
+      @include small-text;
+    }
+  }
+  &__button-add {
+    @include button-gray;
+    align-self: center;
+    margin-right: 5px;
+    padding: 5px 10px;
+  }
+}
+
+

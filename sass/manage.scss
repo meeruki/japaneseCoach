@@ -1,0 +1,49 @@
+@import "fonts";
+@import "buttons";
+
+.manage {
+    padding-top: 30px;
+  &__header-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  &__title {
+    @include bold-text;
+    font-size: 34px;
+    margin-right: 3%;
+  }
+  &__button-edit {
+    @include button-gray;
+    align-self: flex-end;
+  }
+  &__games-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  &__button-game {
+    @include button-gray;
+    padding: 6px 8px;
+  }
+  &__set {
+    border-collapse: collapse;
+    border: 1px solid lightgray;
+  }
+  td {
+    padding: 5px;
+    padding-right: 30px;
+    border: 1px solid lightgray;
+    font-size: 20px;
+  }
+  th {
+    padding: 10px;
+    border: 1px solid lightgray;
+    text-align: left;
+  }
+
+}
+
+

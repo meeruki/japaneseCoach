@@ -1,4 +1,5 @@
 import CreateView from './create-view';
+import createSetTemplate from '../../block/create-set-template';
 // import Application from '../../application.js';
 
 export default class CreateScreen {
@@ -16,7 +17,7 @@ export default class CreateScreen {
 
   init() {
     // this.content.onNextClick = this.click.bind(this);
-    // this.content.onAddTermClick = this.click.addTerm(this);
+    this.content.onAddTermClick = this.addTerm.bind(this);
   }
 
   click() {
@@ -24,7 +25,10 @@ export default class CreateScreen {
   }
 
   addTerm() {
-
+    const createSetForm = this.root.querySelector(`.create__form`);
+    const container = document.createElement(`template`);
+    container.innerHTML = createSetTemplate();
+    createSetForm.appendChild(container.content);
   }
 
 }

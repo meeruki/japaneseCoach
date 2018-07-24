@@ -10,12 +10,11 @@ export default class RulesView extends AbstractView {
   get template() {
     return `<div class="rules">
     <h1 class="rules__title">App name</h1>
-    <p class="rules__description">Составьте свой собственный набор слов или используйте созданный ранее.<br>
-      Выберите метод изучения слов.<br>
-      Отвечайте на вопросы пока все слова не будут изучены.
+    <p class="rules__description">Сreate a study set or use an existing one.<br>
+      Select game type.<br>
     </p>
     <form class="rules__form">
-      <input class="rules__input" type="text" placeholder="your name">
+      <input class="rules__input" type="text" placeholder="your name" autofocus>
       <button class="rules__button  continue" type="submit" disabled>Go!</button>
     </form>
   </div>`;

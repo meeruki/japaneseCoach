@@ -17,11 +17,16 @@ export default class SettingsScreen {
   }
 
   init() {
-    this.content.onCreateClick = this.click.bind(this);
+    this.content.onCreateClick = this.clickCreate.bind(this);
+    this.content.onSetClick = this.clickSet.bind(this);
   }
 
-  click() {
+  clickCreate() {
     Application.showCreate();
+  }
+
+  clickSet(set) {
+    Application.showManage(set);
   }
 
 }

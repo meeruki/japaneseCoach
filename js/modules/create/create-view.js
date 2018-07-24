@@ -25,7 +25,7 @@ export default class CreateView extends AbstractView {
   bind() {
     const createElement = this.element.querySelector(`.create`);
     const createSetForm = createElement.querySelector(`.create__form`);
-    // const addTermButton = createElement.querySelector(`.create__button-add`);
+    const addTermButton = createElement.querySelector(`.create__button-add`);
 
     const onSubmitButtonClick = (evt) => {
       evt.preventDefault();
@@ -36,6 +36,15 @@ export default class CreateView extends AbstractView {
       onSubmitButtonClick(evt);
     });
 
+
+    const onAddTermButtonClick = (evt) => {
+      evt.preventDefault();
+      this.onAddTermClick();
+    };
+
+    addTermButton.addEventListener(`click`, (evt) => {
+      onAddTermButtonClick(evt);
+    });
   }
 
   onNextClick() {
