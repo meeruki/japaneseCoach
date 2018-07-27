@@ -2,42 +2,42 @@ export const sets = [{
   name: `animals`,
   words: [{
     word: `cat`,
-    transcription: `кот`,
+    translation: `кот`,
     syllabary: `kot`
   },
   {
     word: `dog`,
-    transcription: `собака`,
+    translation: `собака`,
     syllabary: `sobaka`
   },
   {
     word: `mouse`,
-    transcription: `мышь`,
+    translation: `мышь`,
     syllabary: `mish`
   },
   {
     word: `earth`,
-    transcription: `земля`,
+    translation: `земля`,
     syllabary: `zemlya`
   },
   {
     word: `dacha`,
-    transcription: `дача`,
+    translation: `дача`,
     syllabary: `dacha`
   },
   {
     word: `summer`,
-    transcription: `лето`,
+    translation: `лето`,
     syllabary: `leto`
   },
   {
     word: `winter`,
-    transcription: `зима`,
+    translation: `зима`,
     syllabary: `zima`
   },
   {
     word: `three`,
-    transcription: `дерево`,
+    translation: `дерево`,
     syllabary: `derevo`
   }
   ]
@@ -46,7 +46,7 @@ export const sets = [{
   name: `creatures`,
   words: [{
     word: `flyingPurplePeopleEater`,
-    transcription: `человекоед`,
+    translation: `человекоед`,
     syllabary: `chelovekoed`
   }]
 }

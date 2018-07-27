@@ -1,5 +1,5 @@
 import CreateView from './create-view';
-import createSetTemplate from '../../block/create-set-template';
+import createSetTemplate from '../../blocks/create-set-template';
 // import Application from '../../application.js';
 
 export default class CreateScreen {

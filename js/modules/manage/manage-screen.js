@@ -29,7 +29,7 @@ export default class ManageScreen {
   }
 
   clickTranslationGame(set) {
-    Application.showGameWrite(set, GameType.WRITE_TRANSCRIPTION);
+    Application.showGameWrite(set, GameType.WRITE_TRANSLATION);
   }
   clickSyllabaryGame(set) {
     Application.showGameWrite(set, GameType.WRITE_SYLLABARY);

@@ -1,5 +1,5 @@
 import AbstractView from '../abstract-view';
-import setsTableTemplate from '../../block/sets-table-template';
+import setsTableTemplate from '../../blocks/sets-table-template';
 
 
 export default class SettingsView extends AbstractView {

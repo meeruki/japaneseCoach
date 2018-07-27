@@ -25,6 +25,17 @@
     @include button-gray;
     padding: 10px 10px;
     margin-top: 20px;
+    color: #ffffff;
+    background-color: #df4e4e;
+    &:enabled:hover {
+      background-color: #ff6969;
+    }
+    &:active {
+      background-color: #af3636;
+    }
+    &:disabled {
+      background-color: #D3D3D3;
+    }
   }
 
 }

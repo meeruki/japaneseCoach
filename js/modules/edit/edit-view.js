@@ -12,10 +12,10 @@ export default class EditView extends AbstractView {
      <table class="edit__set">
      <tr>
     <th>word</th>
-    <th>transcription</th>
+    <th>translation</th>
     <th>syllabary</th>
   </tr>
-    ${this.set.words.map((it) => `<tr><td>${it.word}</td><td>${it.transcription} </td><td>${it.syllabary}</td></tr>`).join(``)}</table>
+    ${this.set.words.map((it) => `<tr><td>${it.word}</td><td>${it.translation} </td><td>${it.syllabary}</td></tr>`).join(``)}</table>
 
    <div class="edit">
      <div class="edit__additional-wrap">

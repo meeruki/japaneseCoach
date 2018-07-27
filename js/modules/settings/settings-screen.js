@@ -3,9 +3,11 @@ import Application from '../../application.js';
 
 
 export default class SettingsScreen {
-  constructor(model) {
-    this.model = model;
-    this.content = new SettingsView(this.model.name, this.model.sets);
+  constructor(data, playerName) {
+    this.data = data;
+    this.playerName = playerName;
+
+    this.content = new SettingsView(this.playerName, this.data);
     this.root = document.createElement(`div`);
     this.root.appendChild(this.content.element);
 

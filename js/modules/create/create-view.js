@@ -1,5 +1,5 @@
 import AbstractView from '../abstract-view';
-import createSetTemplate from '../../block/create-set-template';
+import createSetTemplate from '../../blocks/create-set-template';
 
 
 export default class CreateView extends AbstractView {

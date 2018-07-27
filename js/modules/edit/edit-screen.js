@@ -1,5 +1,5 @@
 import EditView from './edit-view';
-import addRowTemplate from '../../block/add-row-template';
+import addRowTemplate from '../../blocks/add-row-template';
 // import Application from '../../application.js';
 
 export default class EditScreen {

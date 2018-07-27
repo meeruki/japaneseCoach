@@ -31,7 +31,6 @@ class GameWriteModel {
     return this.getWord(this._state.word);
   }
 
-
   getGameType() {
     return this.gameType;
   }
