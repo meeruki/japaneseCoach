@@ -1,6 +1,6 @@
 const addRowTemplate = () => {
 
-  return `<tr><td></td><td></td><td></td></tr>`;
+  return `<tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>`;
 };
 
 export default addRowTemplate;

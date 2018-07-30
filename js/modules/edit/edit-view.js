@@ -23,14 +23,13 @@ export default class EditView extends AbstractView {
        <p>add term</p>
     </div>
   </div>
-    <button class="edit__button-save">save</buttion>
+    <button class="edit__button-save" type="submit">save</buttion>
   </div>`;
   }
 
   bind() {
     const editElement = this.element.querySelector(`.edit`);
     const addTermButton = editElement.querySelector(`.edit__button-add`);
-
 
     const onAddTermButtonClick = (evt) => {
       evt.preventDefault();
@@ -39,9 +38,29 @@ export default class EditView extends AbstractView {
     addTermButton.addEventListener(`click`, (evt) => {
       onAddTermButtonClick(evt);
     });
+
+    const editTableCell = editElement.querySelectorAll(`td`);
+    Array.from(editTableCell).forEach((el) => {
+      el.addEventListener(`click`, () => {
+        this.onCellEditClick(el);
+      });
+    });
+
+    const submitButton = editElement.querySelector(`.edit__button-save`);
+    submitButton.addEventListener(`click`, (evt) => {
+      evt.preventDefault();
+      this.onSubmitButtonClick();
+    });
+
+  }
+  onCellEditClick(element) {
+    return element;
   }
 
   onAddTermClick() {
+  }
+
+  onSubmitButtonClick() {
   }
 
 }

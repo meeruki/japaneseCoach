@@ -7,9 +7,10 @@ const generateState = (game) => {
   return Object.assign({}, game);
 };
 
+
 class GameWriteModel {
-  constructor(data, gameType, playerName) {
-    this.data = data;
+  constructor(set, gameType, playerName) {
+    this.set = set;
     this.gameType = gameType;
     this.playerName = playerName;
 
@@ -25,7 +26,7 @@ class GameWriteModel {
   }
 
   getWord(wordNumber) {
-    return this.data.words[wordNumber];
+    return this.set.words[wordNumber];
   }
   getCurrentWord() {
     return this.getWord(this._state.word);
@@ -37,25 +38,25 @@ class GameWriteModel {
 
   restart() {
     this._state = generateState(INITIAL_GAME);
-    // this._answers = [];
+    this._answers = [];
   }
 
   isEnd() {
-    return this._state.word === this.data.words.length - 1;
+    return this._state.word === this.set.words.length - 1;
   }
 
 
-  /* get answers() {
-    return convertAnswersArr(this._answers);
-  }*/
-
-  /* generateTrueAnswer() {
-    this._answers.push(generateAnswerStat(true, this._state.time));
+  get answers() {
+    return this._answers;
   }
-*/
-  /* generateFalseAnswer() {
-    this._answers.push(generateAnswerStat(false, this._state.time));
-  }*/
+
+  generateTrueAnswer() {
+    this._answers.push(true);
+  }
+
+  generateFalseAnswer() {
+    this._answers.push(false);
+  }
 
 }
 

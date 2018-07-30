@@ -5,7 +5,7 @@ import Application from '../../application.js';
 export default class GameWriteScreen {
   constructor(model) {
     this.model = model;
-    this.content = new GameWriteView(this.model.getCurrentWord(), this.model.getGameType()/* , this.model.answers*/);
+    this.content = new GameWriteView(this.model.getCurrentWord(), this.model.getGameType(), this.model.answers);
 
     this.root = document.createElement(`div`);
     this.root.appendChild(this.content.element);
@@ -23,14 +23,11 @@ export default class GameWriteScreen {
 
   answer(answer) {
     if (answer) {
-      // this.model.generateTrueAnswer();
-      console.log(`right`);
+      this.model.generateTrueAnswer();
     } else {
-      console.log(`wrong`);
-    //  this.model.generateFalseAnswer();
+      this.model.generateFalseAnswer();
     }
     if (this.model.isEnd()) {
-      console.log(`end`);
       this.endGame();
     } else {
       this.model.goToNextWord();
@@ -43,9 +40,11 @@ export default class GameWriteScreen {
   }*/
 
   changeLevel() {
-    const level = new GameWriteView(this.model.getCurrentWord(), this.model.getGameType()/* , this.model.answers*/);
+    const level = new GameWriteView(this.model.getCurrentWord(), this.model.getGameType(), this.model.answers);
     level.onAnswer = this.answer.bind(this);
     this.changeContentView(level);
+    const currentInput = this.root.querySelector(`input`);
+    currentInput.focus();
   }
 
   endGame() {

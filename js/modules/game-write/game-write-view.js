@@ -37,11 +37,12 @@ const handleWriteGame = (element, gameType, currentWord, onAnswer) => {
 };
 
 export default class GameWriteView extends AbstractView {
-  constructor(word, gameType /* , answers*/) {
+  constructor(word, gameType, answers) {
     super();
     this.word = word;
     this.gameType = gameType;
-    // this.answers = answers; в template: ${statsTemplate(this.answers)}
+    this.answers = answers;
+    // в template: ${statsTemplate(this.answers)}
   }
 
   get template() {

@@ -1,6 +1,5 @@
 import RulesScreen from './modules/rules/rules-screen.js';
 import SettingsScreen from './modules/settings/settings-screen.js';
-import CreateScreen from './modules/create/create-screen.js';
 import ManageScreen from './modules/manage/manage-screen.js';
 import EditScreen from './modules/edit/edit-screen.js';
 import {sets} from './data/data-sets.js';
@@ -30,10 +29,6 @@ export default class Application {
     changeView(settingsScreen.element);
   }
 
-  static showCreate() {
-    const createScreen = new CreateScreen();
-    changeView(createScreen.element);
-  }
 
   static showManage(set) {
     const createManage = new ManageScreen(set);

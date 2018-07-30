@@ -24,7 +24,8 @@ export default class SettingsScreen {
   }
 
   clickCreate() {
-    Application.showCreate();
+    // const table = this.root.querySelector(`.sets`);
+
   }
 
   clickSet(set) {
