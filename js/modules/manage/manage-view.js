@@ -10,7 +10,6 @@ export default class ManageView extends AbstractView {
   get template() {
     return `<div class="manage">
    <div class="manage__header-wrap">
-     <h1 class="manage__title">${this.set.name}</h1>
      <button class="manage__button-edit">edit</buttion>
    </div>
    <div class="manage__games-wrap">

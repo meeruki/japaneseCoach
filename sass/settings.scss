@@ -14,13 +14,13 @@
     @include button-gray;
   }
 }
-
 .sets {
   border: 2px solid lightgray;
   border-collapse: collapse;
   align-self: flex-start;
   width: 100%;
   font-size: 20px;
+  
   &__caption{
     text-align: left;
     padding-bottom: 10px;
@@ -29,6 +29,7 @@
   td{
     padding: 0 5px;
     border: 2px solid lightgray;
+    width: 50%;
   }
   td[class^= sets__item]:hover{
     background-color: lightgray;

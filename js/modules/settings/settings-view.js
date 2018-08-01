@@ -3,14 +3,13 @@ import setsTableTemplate from '../../blocks/sets-table-template';
 
 
 export default class SettingsView extends AbstractView {
-  constructor(name, sets) {
+  constructor(sets) {
     super();
-    this.name = name;
     this.sets = sets;
   }
 
   get template() {
-    return `<div class= "settings"><h1 class="settings__title">Welcome, ${this.name}!</h1><button class="settings__create">new set</button>
+    return `<div class= "settings"><button class="settings__create">new set</button>
 
 ${setsTableTemplate(this.sets)}</div>`;
   }

@@ -9,10 +9,9 @@ const generateState = (game) => {
 
 
 class GameWriteModel {
-  constructor(set, gameType, playerName) {
+  constructor(set, gameType) {
     this.set = set;
     this.gameType = gameType;
-    this.playerName = playerName;
 
     this.restart();
   }

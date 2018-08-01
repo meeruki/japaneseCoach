@@ -1,13 +1,11 @@
 import SettingsView from './settings-view';
 import Application from '../../application.js';
 
-
 export default class SettingsScreen {
-  constructor(data, playerName) {
+  constructor(data) {
     this.data = data;
-    this.playerName = playerName;
 
-    this.content = new SettingsView(this.playerName, this.data);
+    this.content = new SettingsView(this.data);
     this.root = document.createElement(`div`);
     this.root.appendChild(this.content.element);
 

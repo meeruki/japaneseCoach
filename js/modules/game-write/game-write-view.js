@@ -1,8 +1,6 @@
-import {
-  GameType
-} from '../../data/data';
+import {GameType} from '../../data/data';
 import AbstractView from '../abstract-view';
-import gameWriteTemplate from '../../blocks/game-write-template.js';
+import gameWriteTemplate from '../../blocks/game-write-template';
 // import statsTemplate from '../../blocks/stats';
 
 const handleWriteGame = (element, gameType, currentWord, onAnswer) => {

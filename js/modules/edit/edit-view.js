@@ -1,4 +1,5 @@
 import AbstractView from '../abstract-view';
+import {Keycode} from '../../data/data';
 
 export default class EditView extends AbstractView {
   constructor(set) {
@@ -8,7 +9,7 @@ export default class EditView extends AbstractView {
 
   get template() {
     return `<div class="edit">
-     <h1 class="edit__title">${this.set.name}</h1>
+     <h1 class="edit__title">Edit ${this.set.name}</h1>
      <table class="edit__set">
      <tr>
     <th>word</th>
@@ -49,9 +50,14 @@ export default class EditView extends AbstractView {
     const submitButton = editElement.querySelector(`.edit__button-save`);
     submitButton.addEventListener(`click`, (evt) => {
       evt.preventDefault();
-      this.onSubmitButtonClick();
+      this.onSubmitButtonClick(this.set);
     });
 
+    document.addEventListener(`keydown`, (evt) => {
+      if (evt.keyCode === Keycode.ENTER) {
+        this.onSubmitButtonClick(this.set);
+      }
+    });
   }
   onCellEditClick(element) {
     return element;
@@ -60,7 +66,8 @@ export default class EditView extends AbstractView {
   onAddTermClick() {
   }
 
-  onSubmitButtonClick() {
+  onSubmitButtonClick(set) {
+    return set;
   }
 
 }

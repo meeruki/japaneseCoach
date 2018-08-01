@@ -1,5 +1,5 @@
-import GameWriteView from './game-write-view.js';
-import Application from '../../application.js';
+import GameWriteView from './game-write-view';
+import Application from '../../application';
 
 
 export default class GameWriteScreen {
@@ -48,7 +48,7 @@ export default class GameWriteScreen {
   }
 
   endGame() {
-    Application.showManage(this.model.data);
+    Application.showManage(this.model.set);
     // Application.showStats(this.model.state, this.model.answers, this.model.playerName);
   }
 

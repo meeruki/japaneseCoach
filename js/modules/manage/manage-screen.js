@@ -1,5 +1,5 @@
 import ManageView from './manage-view';
-import Application from '../../application.js';
+import Application from '../../application';
 import {GameType} from '../../data/data';
 
 export default class ManageScreen {
