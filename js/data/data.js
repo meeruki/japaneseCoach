@@ -4,7 +4,3 @@ export const GameType = {
   WRITE_WORD: 3
 };
 
-export const Keycode = {
-  ENTER: 13,
-  ESC: 27
-};

@@ -1,5 +1,5 @@
 import AbstractView from '../abstract-view';
-import {Keycode} from '../../data/data';
+import {isEnterEvent} from '../../utils';
 
 export default class EditView extends AbstractView {
   constructor(set) {
@@ -40,31 +40,34 @@ export default class EditView extends AbstractView {
       onAddTermButtonClick(evt);
     });
 
-    const editTableCell = editElement.querySelectorAll(`td`);
-    Array.from(editTableCell).forEach((el) => {
-      el.addEventListener(`click`, () => {
-        this.onCellEditClick(el);
-      });
-    });
+    const editHandler = (evt) => {
+      this.onCellEditClick(evt.target);
+    };
+
+    const editTable = editElement.querySelector(`.edit__set`);
+    editTable.addEventListener(`click`, editHandler);
 
     const submitButton = editElement.querySelector(`.edit__button-save`);
     submitButton.addEventListener(`click`, (evt) => {
-      evt.preventDefault();
-      this.onSubmitButtonClick(this.set);
+      onSubmitClick(evt);
     });
 
-    document.addEventListener(`keydown`, (evt) => {
-      if (evt.keyCode === Keycode.ENTER) {
-        this.onSubmitButtonClick(this.set);
-      }
-    });
+    const enterHandler = (evt) => {
+      isEnterEvent(evt, onSubmitClick);
+    };
+    document.addEventListener(`keydown`, enterHandler);
+
+
+    const onSubmitClick = () => {
+      document.removeEventListener(`keydown`, enterHandler);
+      this.onSubmitButtonClick(this.set);
+    };
   }
   onCellEditClick(element) {
     return element;
   }
 
-  onAddTermClick() {
-  }
+  onAddTermClick() {}
 
   onSubmitButtonClick(set) {
     return set;

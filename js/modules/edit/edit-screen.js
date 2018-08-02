@@ -1,19 +1,30 @@
 import EditView from './edit-view';
-import addRowTemplate from '../../blocks/add-row-template';
 import addInputTemplate from '../../blocks/add-input-template';
 import Application from '../../application';
-import {Keycode} from '../../data/data';
+import {Keycode} from '../../utils';
 
-const updateSet = (wordObject, index) => {
-  const setTable = document.querySelector(`.edit__set`);
-  const word = setTable.querySelector(`tr:nth-child(${index + 2}) td:nth-child(1)`);
-  const translation = setTable.querySelector(`tr:nth-child(${index + 2}) td:nth-child(2)`);
-  const syllabary = setTable.querySelector(`tr:nth-child(${index + 2}) td:nth-child(3)`);
-  wordObject.word = word.innerHTML;
-  wordObject.translation = translation.innerHTML;
-  wordObject.syllabary = syllabary.innerHTML;
 
-  return wordObject;
+const addNewLine = (set) => {
+  set.words[set.words.length] = {
+    word: ` `,
+    translation: ` `,
+    syllabary: ` `
+  };
+  return set;
+};
+
+const updateSet = (set, input) => {
+  const parentTd = input.parentNode;
+  const parentTr = parentTd.parentNode;
+  const index = parentTr.sectionRowIndex;
+  if (parentTd.cellIndex === 0) {
+    set.words[index - 1].word = input.value;
+  } else if (parentTd.cellIndex === 1) {
+    set.words[index - 1].translation = input.value;
+  } else {
+    set.words[index - 1].syllabary = input.value;
+  }
+  return set;
 };
 
 export default class EditScreen {
@@ -37,39 +48,46 @@ export default class EditScreen {
   }
 
   addTerm() {
-    const setTable = this.root.querySelector(`.edit__set`);
-    const container = document.createElement(`template`);
-    container.innerHTML = addRowTemplate();
-    setTable.appendChild(container.content);
+    this.set = addNewLine(this.set);
+    this.changeView();
   }
 
   cellEdit(element) {
-    const input = element.querySelector(`input`);
-    if (!input) {
-      const container = document.createElement(`template`);
-      container.innerHTML = addInputTemplate(element.innerHTML);
-      element.innerHTML = ``;
-      element.appendChild(container.content);
+    const container = document.createElement(`template`);
+    container.innerHTML = addInputTemplate(element.innerHTML);
+    element.innerHTML = ``;
+    element.appendChild(container.content);
+    const currentInput = element.querySelector(`input`);
+    currentInput.focus();
 
-      const currentInput = element.querySelector(`input`);
-      currentInput.focus();
-      currentInput.addEventListener(`keydown`, (evt) => {
-        if (evt.keyCode === Keycode.ENTER) {
-          evt.stopPropagation();
-          currentInput.blur();
-        }
-      });
-      currentInput.addEventListener(`blur`, (evt) => {
+    currentInput.addEventListener(`keydown`, (evt) => {
+      if (evt.keyCode === Keycode.ENTER) {
         evt.stopPropagation();
-        element.innerHTML = currentInput.value;
-      });
-    }
+        currentInput.blur();
+        this.set = updateSet(this.set, currentInput);
+        this.changeView();
+      }
+    });
+
+    currentInput.addEventListener(`blur`, (evt) => {
+      evt.stopPropagation();
+      this.set = updateSet(this.set, currentInput);
+      this.changeView();
+    });
   }
 
-  submitForm(set) {
-    let newSet = set;
-    newSet.words.map((wordObject, index) => updateSet(wordObject, index));
-    this.set = newSet;
+  submitForm() {
     Application.showSettings();
   }
+
+  changeView() {
+    const view = new EditView(this.set);
+    view.onAddTermClick = this.addTerm.bind(this);
+    view.onCellEditClick = this.cellEdit.bind(this);
+    view.onSubmitButtonClick = this.submitForm.bind(this);
+
+    this.root.replaceChild(view.element, this.content.element);
+    this.content = view;
+  }
+
 }
