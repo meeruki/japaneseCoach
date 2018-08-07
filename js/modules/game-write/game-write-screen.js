@@ -1,7 +1,6 @@
 import GameWriteView from './game-write-view';
 import Application from '../../application';
 
-
 export default class GameWriteScreen {
   constructor(model) {
     this.model = model;
@@ -9,13 +8,11 @@ export default class GameWriteScreen {
 
     this.root = document.createElement(`div`);
     this.root.appendChild(this.content.element);
-
   }
 
   get element() {
     return this.root;
   }
-
 
   startGame() {
     this.changeLevel();

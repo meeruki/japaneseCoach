@@ -34,7 +34,6 @@ ${setsTableTemplate(this.sets)}</div>`;
         this.onSetClick(currentSet);
       });
     });
-
   }
 
   onCreateClick() {

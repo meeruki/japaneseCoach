@@ -80,9 +80,11 @@ export default class ManageView extends AbstractView {
   onTranslationGameClick(set) {
     return set;
   }
+
   onSyllabaryGameClick(set) {
     return set;
   }
+
   onWordGameClick(set) {
     return set;
   }

@@ -44,7 +44,6 @@ export default class GameWriteView extends AbstractView {
   }
 
   get template() {
-
     return `${gameWriteTemplate(this.word, this.gameType)}`;
   }
 
