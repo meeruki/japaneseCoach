@@ -21,6 +21,7 @@ export default class ManageScreen {
     this.content.onTranslationGameClick = this.clickTranslationGame.bind(this);
     this.content.onSyllabaryGameClick = this.clickSyllabaryGame.bind(this);
     this.content.onWordGameClick = this.clickWordGame.bind(this);
+    this.content.onRandomGameClick = this.clickRandomGame.bind(this);
   }
 
   clickEdit(set) {
@@ -38,5 +39,10 @@ export default class ManageScreen {
   clickWordGame(set) {
     Application.showGameWrite(set, GameType.WRITE_WORD);
   }
+
+  clickRandomGame(set) {
+    Application.showGameWrite(set, GameType.WRITE_RANDOM);
+  }
+
 
 }

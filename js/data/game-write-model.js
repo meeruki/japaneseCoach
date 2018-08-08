@@ -1,3 +1,4 @@
+import {GameType} from './data';
 const INITIAL_GAME = Object.freeze({
   word: 0/* ,
   time: 30*/
@@ -7,6 +8,9 @@ const generateState = (game) => {
   return Object.assign({}, game);
 };
 
+const getRandomInteger = (min, max) => {
+  return Math.floor(Math.random() * (max - min) + min + 1);
+};
 
 class GameWriteModel {
   constructor(set, gameType) {
@@ -30,8 +34,14 @@ class GameWriteModel {
   getCurrentWord() {
     return this.getWord(this._state.word);
   }
-
+  getRandomTypeOfGame() {
+    return getRandomInteger(0, 3);
+  }
   getGameType() {
+    if (this.gameType === GameType.WRITE_RANDOM || this._gameRandom) {
+      this._gameRandom = true;
+      this.gameType = this.getRandomTypeOfGame();
+    }
     return this.gameType;
   }
 

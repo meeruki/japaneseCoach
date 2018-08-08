@@ -2,7 +2,8 @@
 @import "buttons";
 
 .manage {
-    padding-top: 30px;
+  padding-top: 30px;
+
   &__header-wrap {
     display: flex;
     flex-direction: row;
@@ -22,7 +23,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
     margin-bottom: 5px;
+    width: 600px; 
   }
   &__button-game {
     @include button-gray;
@@ -31,17 +34,19 @@
   &__set {
     border-collapse: collapse;
     border: 1px solid lightgray;
+    width: 600px; 
   }
   td {
     padding: 5px;
-    padding-right: 30px;
     border: 1px solid lightgray;
     font-size: 20px;
+    width: 33.33%;
   }
   th {
     padding: 10px;
     border: 1px solid lightgray;
     text-align: left;
+    width: 33.33%;
   }
 
 }

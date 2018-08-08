@@ -16,6 +16,7 @@ export default class ManageView extends AbstractView {
      <button class="manage__button-game write-translation">write translation</buttion>
      <button class="manage__button-game write-syllabary">write syllabary</buttion>
      <button class="manage__button-game write-word">write word</buttion>
+     <button class="manage__button-game write-random">random</buttion>
   </div>
   <table class="manage__set">
   <tr>
@@ -43,6 +44,7 @@ export default class ManageView extends AbstractView {
     const translationGameButton = manageElement.querySelector(`.write-translation`);
     const syllabaryGameButton = manageElement.querySelector(`.write-syllabary`);
     const wordGameButton = manageElement.querySelector(`.write-word`);
+    const randomGameButton = manageElement.querySelector(`.write-random`);
 
     const onTranslationGameButtonClick = (evt) => {
       evt.preventDefault();
@@ -71,6 +73,15 @@ export default class ManageView extends AbstractView {
       onWordGameButtonClick(evt);
     });
 
+    const onRandomGameButtonClick = (evt) => {
+      evt.preventDefault();
+      this.onRandomGameClick(this.set);
+    };
+
+    randomGameButton.addEventListener(`click`, (evt) => {
+      onRandomGameButtonClick(evt);
+    });
+
   }
 
   onEditClick(set) {
@@ -86,6 +97,10 @@ export default class ManageView extends AbstractView {
   }
 
   onWordGameClick(set) {
+    return set;
+  }
+
+  onRandomGameClick(set) {
     return set;
   }
 
