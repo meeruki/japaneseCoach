@@ -1,70 +1,72 @@
 import {GameType} from '../data/data';
 
-const gameWriteTemplate = (word, gameType) => {
+const singleGameTemplate = (question, firstHint, secondHint, firstHintName, secondHintName) => {
+  let gameTable = `<tr>
+          <td>${firstHintName}:</td>
+          <td>${firstHint}</td>
+        </tr>
+        <tr>
+          <td>${secondHintName}:</td>
+          <td>${secondHint}</td>
+        </tr>
+        <tr>
+          <td>${question}:</td>
+          <td>
+            <input type="text" autofocus>
+          </td>
+        </tr>`;
+  return `<form class="game">
+      <h2 class="game__title">Enter ${question}</h2>
+      <table class="game__table">
+      ${gameTable} 
+      </table>
+      <button class="game__answer-button" disabled>submit</button>
+  </form>`;
+};
+
+
+const doubleGameTemplate = (hintName, hint, firstQuestion, secondQuestion) => {
+  let gameTable = `<tr>
+          <td>${hintName}</td>
+          <td>${hint}</td>
+        </tr>
+        <tr>
+          <td>${firstQuestion}:</td>
+            <td>
+            <input type="text" class="game__${firstQuestion}" autofocus>
+          </td>
+        </tr>
+        <tr>
+          <td>${secondQuestion}</td>
+          <td>
+            <input type="text" class="game__${secondQuestion}" autofocus>
+          </td>
+        </tr>`;
+  return `<form class="game">
+      <h2 class="game__title">Enter ${firstQuestion} and ${secondQuestion}</h2>
+      <table class="game__table">
+      ${gameTable} 
+      </table>
+      <button class="game__answer-button" disabled>submit</button>
+  </form>`;
+};
+const gameWriteTemplate = (currentWord, gameType) => {
+  const translation = `Translation`;
+  const syllabary = `Syllabary`;
+  const word = `Word`;
   switch (gameType) {
     case GameType.WRITE_TRANSLATION:
-      return `<form class="game">
-      <h2 class="game__title">Enter translation</h2>
-      <table class="game__table">
-        <tr>
-          <td>Word:</td>
-          <td>${word.word}</td>
-        </tr>
-        <tr>
-          <td>Syllabary:</td>
-          <td>${word.syllabary}</td>
-        </tr>
-        <tr>
-          <td>Translation:</td>
-          <td>
-            <input type="text" autofocus>
-          </td>
-        </tr>
-      </table>
-      <button class="game__answer-button" disabled>submit</button>
-  </form>`;
+      return singleGameTemplate(translation, currentWord.word, currentWord.syllabary, word, syllabary);
     case GameType.WRITE_SYLLABARY:
-      return `<form class="game">
-      <h2 class="game__title">Enter syllabary</h2>
-      <table class="game__table">
-        <tr>
-          <td>Word:</td>
-          <td>${word.word}</td>
-        </tr>
-        <tr>
-          <td>Translation:</td>
-          <td>${word.translation}</td>
-        </tr>
-        <tr>
-          <td>Syllabary:</td>
-          <td>
-            <input type="text" autofocus>
-          </td>
-        </tr>
-      </table>
-      <button class="game__answer-button" disabled>submit</button>
-  </form>`;
+      return singleGameTemplate(syllabary, currentWord.word, currentWord.translation, word, translation);
     case GameType.WRITE_WORD:
-      return `<form class="game">
-      <h2 class="game__title">Enter word</h2>
-      <table class="game__table">
-        <tr>
-          <td>Translation:</td>
-          <td>${word.translation}</td>
-        </tr>
-        <tr>
-          <td>Syllabary:</td>
-          <td>${word.syllabary}</td>
-        </tr>
-        <tr>
-          <td>Word:</td>
-          <td>
-            <input type="text" autofocus>
-          </td>
-        </tr>
-      </table>
-      <button class="game__answer-button" disabled>submit</button>
-  </form>`;
+      return singleGameTemplate(word, currentWord.syllabary, currentWord.translation, syllabary, translation);
+    case GameType.WRITE_WORD_AND_TRANSLATION:
+      return doubleGameTemplate(syllabary, currentWord.syllabary, word, translation);
+    case GameType.WRITE_WORD_AND_SYLLABARY:
+      return doubleGameTemplate(translation, currentWord.translation, word, syllabary);
+    case GameType.WRITE_SYLLABARY_AND_TRANSLATION:
+      return doubleGameTemplate(word, currentWord.word, syllabary, translation);
     default:
       throw new RangeError(`No such type of game`);
   }
