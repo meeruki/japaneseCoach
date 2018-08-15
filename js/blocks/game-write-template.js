@@ -12,7 +12,7 @@ const singleGameTemplate = (question, firstHint, secondHint, firstHintName, seco
         <tr>
           <td>${question}:</td>
           <td>
-            <input type="text" autofocus>
+            <input class="game__single-input" type="text" autofocus>
           </td>
         </tr>`;
   return `<form class="game">
@@ -20,7 +20,7 @@ const singleGameTemplate = (question, firstHint, secondHint, firstHintName, seco
       <table class="game__table">
       ${gameTable} 
       </table>
-      <button class="game__answer-button" disabled>submit</button>
+      <button class="game__answer-button">submit</button>
   </form>`;
 };
 
@@ -47,13 +47,13 @@ const doubleGameTemplate = (hintName, hint, firstQuestion, secondQuestion) => {
       <table class="game__table">
       ${gameTable} 
       </table>
-      <button class="game__answer-button" disabled>submit</button>
+      <button class="game__answer-button">submit</button>
   </form>`;
 };
 const gameWriteTemplate = (currentWord, gameType) => {
-  const translation = `Translation`;
-  const syllabary = `Syllabary`;
-  const word = `Word`;
+  const translation = `translation`;
+  const syllabary = `syllabary`;
+  const word = `word`;
   switch (gameType) {
     case GameType.WRITE_TRANSLATION:
       return singleGameTemplate(translation, currentWord.word, currentWord.syllabary, word, syllabary);

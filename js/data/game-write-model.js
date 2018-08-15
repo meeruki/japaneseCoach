@@ -35,7 +35,7 @@ class GameWriteModel {
     return this.getWord(this._state.word);
   }
   getRandomTypeOfGame() {
-    return getRandomInteger(0, 3);
+    return getRandomInteger(0, 6);
   }
   getGameType() {
     if (this.gameType === GameType.WRITE_RANDOM || this._gameRandom) {

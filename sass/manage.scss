@@ -3,8 +3,7 @@
 
 .manage {
   padding-top: 30px;
-
-  &__header-wrap {
+  &__header-wrap{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -25,11 +24,22 @@
     justify-content: space-between;
     flex-wrap: wrap;
     margin-bottom: 5px;
-    width: 600px; 
+    width: 600px;
+    font-size: 12px;
   }
-  &__button-game {
+  &__game-label {
+    margin-right: 0;
+  }
+  //временное 
+  input {
+    margin-right: 50px;
+    margin-top: 11px;
+  }
+  //
+  &__submit {
     @include button-gray;
-    padding: 6px 8px;
+    padding: 6px;
+    margin: 0 auto;  
   }
   &__set {
     border-collapse: collapse;

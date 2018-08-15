@@ -6,28 +6,49 @@ import gameWriteTemplate from '../../blocks/game-write-template';
 const handleWriteGame = (element, gameType, currentWord, onAnswer) => {
   const game = element.querySelector(`.game`);
   const gameAnswerButton = game.querySelector(`.game__answer-button`);
-  const gameInput = game.querySelector(`input`);
+  const singleGameInput = game.querySelector(`.game__single-input`);
+  const doubleGameWordInput = game.querySelector(`.game__word`);
+  const doubleGameTranslationInput = game.querySelector(`.game__translation`);
+  const doubleGameSyllabaryInput = game.querySelector(`.game__syllabary`);
 
-  gameInput.addEventListener(`input`, () => {
-    gameAnswerButton.disabled = !gameInput.value.trim().length;
-  });
-
-  const addGameListeners = (property) => {
+  const addSingleGameListeners = (property) => {
     gameAnswerButton.addEventListener(`click`, (evt) => {
       evt.preventDefault();
-      onAnswer(gameInput.value === property);
+      onAnswer(singleGameInput.value === property);
+    });
+  };
+
+  const addDoubleGameListeners = (firstQuestion, secondQuestion) => {
+    gameAnswerButton.addEventListener(`click`, (evt) => {
+      evt.preventDefault();
+      if (doubleGameWordInput && doubleGameTranslationInput) {
+        onAnswer(doubleGameWordInput.value === firstQuestion && doubleGameTranslationInput.value === secondQuestion);
+      } else if (doubleGameSyllabaryInput && doubleGameTranslationInput) {
+        onAnswer(doubleGameSyllabaryInput.value === firstQuestion && doubleGameTranslationInput.value === secondQuestion);
+      } else if (doubleGameWordInput && doubleGameSyllabaryInput) {
+        onAnswer(doubleGameWordInput.value === firstQuestion && doubleGameSyllabaryInput.value === secondQuestion);
+      }
     });
   };
 
   switch (gameType) {
     case GameType.WRITE_TRANSLATION:
-      addGameListeners(currentWord.translation);
+      addSingleGameListeners(currentWord.translation);
       break;
     case GameType.WRITE_SYLLABARY:
-      addGameListeners(currentWord.syllabary);
+      addSingleGameListeners(currentWord.syllabary);
       break;
     case GameType.WRITE_WORD:
-      addGameListeners(currentWord.word);
+      addSingleGameListeners(currentWord.word);
+      break;
+    case GameType.WRITE_SYLLABARY_AND_TRANSLATION:
+      addDoubleGameListeners(currentWord.syllabary, currentWord.translation);
+      break;
+    case GameType.WRITE_WORD_AND_TRANSLATION:
+      addDoubleGameListeners(currentWord.word, currentWord.translation);
+      break;
+    case GameType.WRITE_WORD_AND_SYLLABARY:
+      addDoubleGameListeners(currentWord.word, currentWord.syllabary);
       break;
     default:
       throw new RangeError(`No such type of game`);
@@ -55,3 +76,4 @@ export default class GameWriteView extends AbstractView {
     return answer;
   }
 }
+
